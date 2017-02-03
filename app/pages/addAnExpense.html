@@ -4,12 +4,12 @@
 <div class="modal-body clearfix">
         <div class="row">
           <div class="col-lg-12 clearfix addanexpense">
-            <h1>Add Business Expense</h1>
+            <h1>إضافة نفقات الأعمال</h1>
             <div class="expenseform clearfix" data-role="page" id="page1">
               <ul>
                 <li>
                   <div role="main" class="ui-content">
-                    <input id="expDate" type="text" class="span2 dp1" placeholder="Date" readonly="readonly">
+                    <input id="expDate" type="text" class="span2 dp1" placeholder="تاريخ" readonly="readonly">
                   </div>
 				</li>
                 <li>
@@ -22,18 +22,18 @@
                   <input id="ratePerUnit" type="hidden" >
                 </li>
                 <li>
-                  <input id="expFromLoc" type="text" style="width: 49%" placeholder="From Location" onchange="resetUnit();" onblur="setNarration();">
-				  <input id="expToLoc" type="text" style="width: 49%" placeholder="To Location" onchange="resetUnit();" onblur="setNarration();">
+                  <input id="expFromLoc" type="text" style="width: 49%" placeholder="من الموقع" onchange="resetUnit();" onblur="setNarration();">
+				  <input id="expToLoc" type="text" style="width: 49%" placeholder="إلى الموقع" onchange="resetUnit();" onblur="setNarration();">
                 </li>
                 <li>
-                  <input id="expNarration" type="text" placeholder="Enter Expense Narration" >
+                  <input id="expNarration" type="text" placeholder="أدخل السرد حساب" >
                 </li>
                 
 				<li>
-				  <p><font face="verdana" size="1" color="green">Unit is no. of persons/Kms/meals etc.</font></span></p>
-                  <input id="expUnit" type="tel" style="width: 22%" placeholder="Units" onkeyup="calculatePerUnit();">
+				  <p><font face="verdana" size="1" color="green">الوحدة هي لا. الأشخاص / كم / جبات الخ</font></span></p>
+                  <input id="expUnit" type="tel" style="width: 22%" placeholder="وحدات" onkeyup="calculatePerUnit();">
 		  <input id="wayPointunitValue" value="" readonly="readonly" type="hidden">
-		  <input id="expAmt" type="tel" style="width: 38%" placeholder="Amount" onkeyup="checkPerUnitExceptionStatusForBEAtLineLevel();validate();">
+		  <input id="expAmt" type="tel" style="width: 38%" placeholder="كمية" onkeyup="checkPerUnitExceptionStatusForBEAtLineLevel();validate();">
                   <input id="currency" type="hidden" style="width: 33%">
 				  <p id="errorMsgArea" ><span id="errorSpan"></span></p>
 				</li>
@@ -53,7 +53,7 @@
 			   </div>
 			
             <div  style="display:none" id="displayText" class="displayTextCSS">
-               Expenses added successfully.
+               وأضافت النفقات بنجاح.
            </div>
 		   <div style="text-align:center;">
             <button class="btn btn-primary btn-lg " style="width: 40%;height: 52px;" onclick="saveBusinessDetails(0);">Save &amp; New</button>
@@ -63,7 +63,7 @@
           </div>
         </div>
 		<div style="display:none" id="loading_Cat" >
-               <img src="images/loading2.gif" id="loading-image_Cat" alt="Loading..." >
+               <img src="images/loading2.gif" id="loading-image_Cat" alt="جار التحميل..." >
 		</div>
 
       <div id="openModal" class="modalDialog" style="display:none;">
@@ -102,7 +102,7 @@ var currentYear;
 		var field = document.getElementById("expAmt");
 		if (field.value.length > 8 ) {
 			field.value = field.value.substring(0, 8);
-			alert("Amount cannot be greater than 99999999.99");
+			alert("مبلغ لا يمكن أن يكون أكبر من 99999999.99");
 			field.value='';
 			return false;
 		}

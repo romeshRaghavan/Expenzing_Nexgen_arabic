@@ -9,8 +9,8 @@ var empFirstName;
 var successSyncStatusBE =false;
 var successSyncStatusTR =false;
 
-var successMsgForCurrency = "Currency synchronized successfully.";
-var errorMsgForCurrency = "Currency not synchronized successfully.";
+var successMsgForCurrency = "العملة متزامنة بنجاح.";
+var errorMsgForCurrency = "عملة غير متزامنة بنجاح.";
 
 var app = {
     // Application Constructor
@@ -156,7 +156,7 @@ if (window.openDatabase) {
         t.executeSql("CREATE TABLE IF NOT EXISTS currencyConversionMst (currencyCovId INTEGER PRIMARY KEY ASC, currencyId INTEGER REFERENCES currencyMst(currencyId), defaultcurrencyId INTEGER ,conversionRate Double)");
     });
 } else {
-    alert("WebSQL is not supported by your browser!");
+    alert("غير معتمد SQL الويب من خلال المتصفح الخاص بك!");
 }
 
 //function to remove a employeeDetails from the database, passed the row id as it's only parameter
@@ -242,7 +242,7 @@ function saveBusinessDetails(status){
 					//j('#currency').select2('data', '');
 					j('#loading_Cat').hide();
                     //j('#syncSuccessMsg').empty();
-					document.getElementById("syncSuccessMsg").innerHTML = "Expenses added successfully.";
+					document.getElementById("syncSuccessMsg").innerHTML = "النفقات وأضافت بنجاح.";
 					j('#syncSuccessMsg').hide().fadeIn('slow').delay(300).fadeOut('slow') ;
 					resetImageData();
 					//createBusinessExp();
@@ -255,7 +255,7 @@ function saveBusinessDetails(status){
 			return false;
 		}
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }
 }
 
@@ -358,7 +358,7 @@ function saveTravelSettleDetails(status){
 					smallImageTS.src = "";
 					j('#loading_Cat').hide();
                     //j('#syncSuccessMsg').empty();
-					document.getElementById("syncSuccessMsg").innerHTML = "Expenses added successfully.";
+					document.getElementById("syncSuccessMsg").innerHTML = "النفقات وأضافت بنجاح.";
 					j('#syncSuccessMsg').hide().fadeIn('slow').delay(300).fadeOut('slow');
 					resetImageData();
 				}else{
@@ -370,7 +370,7 @@ function saveTravelSettleDetails(status){
 			return false;
 		}
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }
 }
 
@@ -394,10 +394,10 @@ function fetchExpenseClaim() {
 	var rowThead = j("<thead></thead>").appendTo(mytable);
 	var rowTh = j('<tr></tr>').attr({ class: ["test"].join(' ') }).appendTo(rowThead);
 	
-	j('<th></th>').text("Date").appendTo(rowTh);
-	j('<th></th>').text("Expense Name").appendTo(rowTh);
-	j('<th></th>').text("Narration From/To Loc").appendTo(rowTh); 	
-	j('<th></th>').text("Amt").appendTo(rowTh);
+	j('<th></th>').text("تاريخ").appendTo(rowTh);
+	j('<th></th>').text("اسم حساب").appendTo(rowTh);
+	j('<th></th>').text("رواية من / إلى الموقع").appendTo(rowTh); 	
+	j('<th></th>').text("كمية").appendTo(rowTh);
 	var cols = new Number(5);
 	 
 	mydb.transaction(function(t) {
@@ -508,11 +508,11 @@ function fetchExpenseClaim() {
 	var rowThead = j("<thead></thead>").appendTo(mytable);
 	var rowTh = j('<tr></tr>').attr({ class: ["test"].join(' ') }).appendTo(rowThead);
 	
-	j('<th></th>').text("Date").appendTo(rowTh);
-	j('<th></th>').text("Expense Name").appendTo(rowTh);
-	j('<th></th>').text("Amt").appendTo(rowTh);
-	j('<th></th>').text("cityTown").appendTo(rowTh);
-	j('<th></th>').text("Narration").appendTo(rowTh);
+	j('<th></th>').text("تاريخ").appendTo(rowTh);
+	j('<th></th>').text("اسم حساب").appendTo(rowTh);
+	j('<th></th>').text("كمية").appendTo(rowTh);
+	j('<th></th>').text("مدينة مدينة").appendTo(rowTh);
+	j('<th></th>').text("رواية").appendTo(rowTh);
 	
 	
 	var cols = new Number(4);
@@ -699,20 +699,20 @@ function synchronizeBEMasterData() {
 
                       
 					j('#loading_Cat').hide(); 
-            document.getElementById("syncSuccessMsg").innerHTML = "Business Expenses synchronized successfully.";
+            document.getElementById("syncSuccessMsg").innerHTML = "نفقات الأعمال متزامنة بنجاح.";
               j('#syncSuccessMsg').hide().fadeIn('slow').delay(500).fadeOut('slow');
 		 			
 				}
 				else{
 					j('#loading_Cat').hide();
-					document.getElementById("syncFailureMsg").innerHTML = "Business Expenses not synchronized successfully.";
+					document.getElementById("syncFailureMsg").innerHTML = "نفقات الأعمال غير متزامنة بنجاح.";
 					j('#syncFailureMsg').hide().fadeIn('slow').delay(300).fadeOut('slow');
 					
 				}
 					
 			  },
 			  error:function(data) {
-				 alert("Error: Oops something is wrong, Please Contact System Administer");
+				 alert("خطأ: عذرا، هناك خطأ ما، الرجاء الاتصال نظام إدارة");
 			  }
 			});
 			
@@ -745,19 +745,19 @@ function synchronizeBEMasterData() {
 				}
 				else{
 				j('#loading_Cat').hide();
-					document.getElementById("syncFailureMsg").innerHTML = "Currency not synchronized successfully.";;
+					document.getElementById("syncFailureMsg").innerHTML = "عملة غير متزامنة بنجاح.";;
 					j('#syncFailureMsg').hide().fadeIn('slow').delay(300).fadeOut('slow');
 					
 				}	
 				
 			},
 			  error:function(data) {
-				alert("Error: Oops something is wrong, Please Contact System Administer");
+				alert("خطأ: عذرا، هناك خطأ ما، الرجاء الاتصال نظام إدارة");
 			  }
 				});	
 			
 	} else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }
 	
 }
@@ -816,12 +816,12 @@ function synchronizeBEMasterData() {
 
 				}else{
 
-					document.getElementById("syncFailureMsg").innerHTML = "Account Head Not synchronized Successfully.";
+					document.getElementById("syncFailureMsg").innerHTML = "رئيس الحساب غير متزامنة بنجاح.";
 					j('#syncFailureMsg').hide().fadeIn('slow').delay(300).fadeOut('slow');
 				}
 			},		
 			error:function(data) {
-				alert("Error: Oops something is wrong, Please Contact System Administer");
+				alert("خطأ: عذرا، هناك خطأ ما، الرجاء الاتصال نظام إدارة");
 			}	
 				
 		});
@@ -861,7 +861,7 @@ function synchronizeBEMasterData() {
 					
 				},
 				  error:function(data) {
-					alert("Error: Oops something is wrong, Please Contact System Administer");
+					alert("خطأ: عذرا، هناك خطأ ما، الرجاء الاتصال نظام إدارة");
 				  }
 					});	
 		
@@ -920,7 +920,7 @@ function synchronizeBEMasterData() {
 							}
 						}
 					});
-				document.getElementById("syncFailureMsg").innerHTML = "Category/CityTown Master synchronized successfully.";
+				document.getElementById("syncFailureMsg").innerHTML = "فئة مدينة تاون ماستر متزامنة بنجاح.";
 				j('#syncFailureMsg').hide().fadeIn('slow').delay(200).fadeOut('slow');                   
 				mydb.transaction(function (t) {
 					t.executeSql("DELETE FROM travelTypeMst");
@@ -940,18 +940,18 @@ function synchronizeBEMasterData() {
 					
 				}else{
 					j('#loading_Cat').hide();
-					document.getElementById("syncFailureMsg").innerHTML = "Travel Required master Expenses not synchronized successfully.";
+					document.getElementById("syncFailureMsg").innerHTML = "السفر المطلوبة المصروفات سيد غير متزامنة بنجاح.";
 					j('#syncFailureMsg').hide().fadeIn('slow').delay(300).fadeOut('slow');
 				}
 			},
 			error:function(data) {
-				alert("Error: Oops something is wrong, Please Contact System Administer");
+				alert("خطأ: عذرا، هناك خطأ ما، الرجاء الاتصال نظام إدارة");
 			}
 		});
 		
 				 
 	} else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }
  }
  
@@ -963,7 +963,7 @@ function synchronizeBEMasterData() {
 				t.executeSql("SELECT * FROM expNameMst", [], getExpNameList);
 			});
 	} else {
-		alert("db not found, your browser does not support web sql!");
+		alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
 	}
  }
  
@@ -1032,7 +1032,7 @@ function getCurrencyList(transaction, results) {
 				t.executeSql("SELECT * FROM travelAccountHeadMst where processId=3", [], getTrAccHeadList);
 			});
 	} else {
-		alert("db not found, your browser does not support web sql!");
+		alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
 	}
  }
 
@@ -1246,7 +1246,7 @@ function saveWalletAttachment(status){
             alert("You must enter inputs!");
         }
 	} else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }
 }
 
@@ -1260,7 +1260,7 @@ function getExpenseNamesfromDB(accountHeadId){
 			t.executeSql("SELECT * FROM expNameMst where accHeadId="+accountHeadId, [], getExpNameList);
 		});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }	
 }
 
@@ -1272,7 +1272,7 @@ function getExpenseNamesfromDBTravel(travelRequestId){
         	//t.executeSql("SELECT * FROM travelExpenseNameMst where travelAccountHeadId="+accountHeadId, [],fetchTravelExpeseName);
 			});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }	
 }
 
@@ -1283,7 +1283,7 @@ function getStartEndDatefromDBTravel(travelRequestId){
         var result	= t.executeSql("select travelStartDate,travelEndDate from travelRequestDetails where travelRequestId="+travelRequestId, [],fetchTravelStartEndDate);
         	});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }	
 }
 
@@ -1295,7 +1295,7 @@ function getCurrencyDBTravel(travelRequestId){
         	
 			});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }	
 }
 
@@ -1310,7 +1310,7 @@ function onloadTravelSettleData() {
 				t.executeSql("SELECT * FROM currencyMst", [], getCurrencyList);
 			});
 	} else {
-		alert("db not found, your browser does not support web sql!");
+		alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
 	}
  }
  
@@ -1374,7 +1374,7 @@ function fetchTravelDomOrInterDate(transaction, results) {
 		t.executeSql("SELECT * FROM currencyMst", [], getCurrencyList);
 		});
 		} else {
-		alert("db not found, your browser does not support web sql!");
+		alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
 	}
 		}
 	}
@@ -1391,7 +1391,7 @@ function getPerUnitFromDB(expenseNameID){
 			t.executeSql("SELECT * FROM expNameMst where id="+expenseNameID, [], setPerUnitDetails);
 		});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }	
 }
 
@@ -1402,7 +1402,7 @@ function getModecategoryFromDB(expenseNameID){
 			t.executeSql("SELECT * FROM travelExpenseNameMst where id="+expenseNameID, [], setModeCategroyDetails);
 		});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }	
 }
 
@@ -1413,7 +1413,7 @@ function getCategoryFromDB(modeID){
 			t.executeSql("SELECT * FROM travelCategoryMst where travelModeId="+modeID, [], fetchTrvlCategoryList);
 		});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }	
 }
 
@@ -1452,22 +1452,22 @@ function synchronizeTRForTS() {
 					onloadTravelSettleData();
 					j('#loading_Cat').hide();
 
-				document.getElementById("syncSuccessMsg").innerHTML = "Travel Request Details synchronized successfully.";
+				document.getElementById("syncSuccessMsg").innerHTML = "السفر طلب تفاصيل متزامنة بنجاح.";
 				j('#syncSuccessMsg').hide().fadeIn('slow').delay(500).fadeOut('slow');
 				}else{
 					j('#loading_Cat').hide();
-					document.getElementById("syncFailureMsg").innerHTML = "Travel Required Expenses not synchronized successfully.";
+					document.getElementById("syncFailureMsg").innerHTML = "مصاريف السفر المطلوبة غير متزامنة بنجاح.";
 					j('#syncFailureMsg').hide().fadeIn('slow').delay(300).fadeOut('slow');
 				}
 					
 			},
 			error:function(data) {
-				alert("Error: Oops something is wrong, Please Contact System Administer");
+				alert("خطأ: عذرا، هناك خطأ ما، الرجاء الاتصال نظام إدارة");
 			}
 		});
 
 	} else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }
  }
  
@@ -1623,7 +1623,7 @@ function synchronizeEAMasterData() {
 					
 			  },
 			  error:function(data) {
-				 alert("Error: Oops something is wrong, Please Contact System Administer");
+				 alert("خطأ: عذرا، هناك خطأ ما، الرجاء الاتصال نظام إدارة");
 			  }
 			});
   }
@@ -1645,7 +1645,7 @@ function onloadEAData() {
 				t.executeSql("SELECT * FROM accountHeadEAMst", [], fetchAccountHeadList);
 			});
 	} else {
-		alert("db not found, your browser does not support web sql!");
+		alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
 	}
  }
 
@@ -1670,7 +1670,7 @@ function getAdvanceTypeFromDB(AdvancetypeID){
 			t.executeSql("SELECT * FROM advanceType where advancetypeID="+AdvancetypeID, [], fetchAdvanceTypeList);
 		});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }	
 }
 
@@ -1694,7 +1694,7 @@ function getAccountHeadFromDB(AccountHeadID){
 			t.executeSql("SELECT * FROM accountHeadEAMst where accountHeadId="+AccountHeadID, [], fetchAccountHeadList);
 		});
     } else {
-        alert("db not found, your browser does not support web sql!");
+        alert("ديسيبل لم يتم العثور على متصفحك لا يدعم مزود الويب!");
     }	
 }
 
@@ -1713,10 +1713,10 @@ function fetchEmployeeAdvance() {
 	var rowThead = j("<thead></thead>").appendTo(mytable);
 	var rowTh = j('<tr></tr>').attr({ class: ["test"].join(' ') }).appendTo(rowThead);
 	
-	j('<th></th>').text("Date").appendTo(rowTh);
-	j('<th></th>').text("Expense Name").appendTo(rowTh);
-	j('<th></th>').text("Narration From/To Loc").appendTo(rowTh); 	
-	j('<th></th>').text("Amt").appendTo(rowTh);
+	j('<th></th>').text("تاريخ").appendTo(rowTh);
+	j('<th></th>').text("اسم حساب").appendTo(rowTh);
+	j('<th></th>').text("رواية من / إلى الموقع").appendTo(rowTh); 	
+	j('<th></th>').text("كمية").appendTo(rowTh);
 	var cols = new Number(5);
 	 
 	mydb.transaction(function(t) {
@@ -1813,9 +1813,9 @@ function fetchEmployeeAdvance() {
    var rowThead = j("<thead></thead>").appendTo(table1);
 	var rowTh = j('<tr></tr>').attr({ class: ["test"].join(' ') }).appendTo(rowThead);
 	
-	j('<th></th>').text("Voucher No.").appendTo(rowTh);
+	j('<th></th>').text("رقم القسيمة").appendTo(rowTh);
 	//j('<th></th>').text("Title").appendTo(rowTh);
-	j('<th></th>').text("Amount").appendTo(rowTh);
+	j('<th></th>').text("كمية").appendTo(rowTh);
 	 
     table2 = j('<table></table>').attr({ id: "source1",class:["table","table-striped","table-bordered"].join(' ') }).appendTo(mainTable);
     var rowThead1 = j("<thead></thead>").appendTo(table2);
@@ -1881,10 +1881,10 @@ function fetchBusinessExpNdEmployeeAdv() {
 	var rowThead = j("<thead></thead>").appendTo(mytable);
 	var rowTh = j('<tr></tr>').attr({ class: ["test"].join(' ') }).appendTo(rowThead);
 	
-	j('<th></th>').text("Date").appendTo(rowTh);
-	j('<th></th>').text("Expense Name").appendTo(rowTh);
-	j('<th></th>').text("Narration From/To Loc").appendTo(rowTh); 	
-	j('<th></th>').text("Amt").appendTo(rowTh);
+	j('<th></th>').text("تاريخ").appendTo(rowTh);
+	j('<th></th>').text("اسم حساب").appendTo(rowTh);
+	j('<th></th>').text("رواية من / إلى الموقع").appendTo(rowTh); 	
+	j('<th></th>').text("كمية").appendTo(rowTh);
 	var cols = new Number(5);
 	 
 	mydb.transaction(function(t) {
@@ -1981,9 +1981,9 @@ function fetchBusinessExpNdEmployeeAdv() {
    var rowThead = j("<thead></thead>").appendTo(table1);
 	var rowTh = j('<tr></tr>').attr({ class: ["test"].join(' ') }).appendTo(rowThead);
 	
-	j('<th></th>').text("Voucher No.").appendTo(rowTh);
+	j('<th></th>').text("رقم القسيمة.").appendTo(rowTh);
 	//j('<th></th>').text("Title").appendTo(rowTh);
-	j('<th></th>').text("Amount").appendTo(rowTh);
+	j('<th></th>').text("كمية").appendTo(rowTh);
 	 
     table2 = j('<table></table>').attr({ id: "source1",class:["table","table-striped","table-bordered"].join(' ') }).appendTo(mainTable);
     var rowThead1 = j("<thead></thead>").appendTo(table2);
@@ -2033,10 +2033,10 @@ function fetchExpenseClaimFromMain() {
 	var rowThead = j("<thead></thead>").appendTo(mytable);
 	var rowTh = j('<tr></tr>').attr({ class: ["test"].join(' ') }).appendTo(rowThead);
 	
-	j('<th></th>').text("Date").appendTo(rowTh);
-	j('<th></th>').text("Expense Name").appendTo(rowTh);
-	j('<th></th>').text("Narration From/To Loc").appendTo(rowTh); 	
-	j('<th></th>').text("Amt").appendTo(rowTh);
+	j('<th></th>').text("تاريخ").appendTo(rowTh);
+	j('<th></th>').text("اسم حساب").appendTo(rowTh);
+	j('<th></th>').text("رواية من / إلى الموقع").appendTo(rowTh); 	
+	j('<th></th>').text("تاريخ").appendTo(rowTh);
 	var cols = new Number(5);
 	 
 	mydb.transaction(function(t) {
@@ -2126,18 +2126,18 @@ function fetchExpenseClaimFromMain() {
 	 mytable.appendTo("#box");		 
  }
 
-function fetchTravelSettlementExpFromMain() {
+ function fetchTravelSettlementExpFromMain() {
 	j('#source').remove();
 	mytable = j('<table></table>').attr({ id: "source",class: ["table","table-striped","table-bordered"].join(' ') });
 	
 	var rowThead = j("<thead></thead>").appendTo(mytable);
 	var rowTh = j('<tr></tr>').attr({ class: ["test"].join(' ') }).appendTo(rowThead);
 	
-	j('<th></th>').text("Date").appendTo(rowTh);
-	j('<th></th>').text("Expense Name").appendTo(rowTh);
-	j('<th></th>').text("Amt").appendTo(rowTh);
-	j('<th></th>').text("cityTown").appendTo(rowTh);
-	j('<th></th>').text("Narration").appendTo(rowTh);
+	j('<th></th>').text("تاريخ").appendTo(rowTh);
+	j('<th></th>').text("اسم حساب").appendTo(rowTh);
+	j('<th></th>').text("كمية").appendTo(rowTh);
+	j('<th></th>').text("تاون المدينة").appendTo(rowTh);
+	j('<th></th>').text("رواية").appendTo(rowTh);
 	
 	
 	var cols = new Number(4);

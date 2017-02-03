@@ -2,9 +2,9 @@
     <div class="sap_tabs">	
          <div id="horizontalTab" style="style= display: block;width: 100%;margin: 0px;padding-top: 24px;">
                <ul class="resp-tabs-list">
-				 <li class="active" class="resp-tab-item resp-tab-active" aria-controls="tab_item-0" role="tab" onclick ="addHeader();"> Business Expense</li>
-                 <li class="resp-tab-item " aria-controls="tab_item-1" role="tab" onclick ="addHeader();"> Employee Advance</li>
-				 <li class="resp-tab-item " aria-controls="tab_item-2" role="tab" onclick ="fetchBusiEmpAdv();" > sync</li>
+				 <li class="active" class="resp-tab-item resp-tab-active" aria-controls="tab_item-0" role="tab" onclick ="addHeader();"> نفقات الأعمال</li>
+                 <li class="resp-tab-item " aria-controls="tab_item-1" role="tab" onclick ="addHeader();"> موظف المسبق</li>
+				 <li class="resp-tab-item " aria-controls="tab_item-2" role="tab" onclick ="fetchBusiEmpAdv();" > مزامنة</li>
                 </ul>				  	 
 				<div class="resp-tabs-container">
                     
@@ -12,12 +12,12 @@
                         <div class="modal-body clearfix">
            <div class="row">
           <div class="col-lg-12 clearfix addanexpense">
-            <h1>Add Business Expense</h1>
+            <h1>إضافة نفقات الأعمال</h1>
             <div class="expenseform clearfix" data-role="page" id="page1">
               <ul style="padding-left: 25px;padding-right: 25px;">
                 <li>
                   <div role="main" class="ui-content">
-                    <input id="expDate" type="text" class="span2 dp1" placeholder="Date" readonly="readonly">
+                    <input id="expDate" type="text" class="span2 dp1" placeholder="تاريخ" readonly="readonly">
                   </div>
 				</li>
                 <li>
@@ -30,18 +30,18 @@
                   <input id="ratePerUnit" type="hidden" >
                 </li>
                 <li>
-                  <input id="expFromLoc" type="text" style="width: 49%" placeholder="From Location" onchange="resetUnit();" onblur="setNarration();">
-				  <input id="expToLoc" type="text" style="width: 49%" placeholder="To Location" onchange="resetUnit();" onblur="setNarration();">
+                  <input id="expFromLoc" type="text" style="width: 49%" placeholder="من الموقع" onchange="resetUnit();" onblur="setNarration();">
+				  <input id="expToLoc" type="text" style="width: 49%" placeholder="إلى الموقع" onchange="resetUnit();" onblur="setNarration();">
                 </li>
                 <li>
-                  <input id="expNarration" type="text" placeholder="Enter Expense Narration" >
+                  <input id="expNarration" type="text" placeholder="أدخل السرد حساب" >
                 </li>
                 
 				<li>
-				  <p><font face="verdana" size="1" color="green">Unit is no. of persons/Kms/meals etc.</font></p>
-                  <input id="expUnit" type="tel" style="width: 22%" placeholder="Units" onkeyup="calculatePerUnit();">
+				  <p><font face="verdana" size="1" color="green">الوحدة هي لا. الأشخاص / كم / جبات الخ.</font></p>
+                  <input id="expUnit" type="tel" style="width: 22%" placeholder="وحدات" onkeyup="calculatePerUnit();">
 		  <input id="wayPointunitValue" value="" readonly="readonly" type="hidden">
-		  <input id="expAmt" type="tel" style="width: 38%" placeholder="Amount" onkeyup="checkPerUnitExceptionStatusForBEAtLineLevel();validate();">
+		  <input id="expAmt" type="tel" style="width: 38%" placeholder="كمية" onkeyup="checkPerUnitExceptionStatusForBEAtLineLevel();validate();">
                   <input id="currency" type="hidden" style="width: 33%">
 				  <p id="errorMsgArea" ><span id="errorSpan"></span></p>
 				</li>
@@ -61,11 +61,11 @@
 			   </div>
 			
             <div  style="display:none" id="displayText" class="displayTextCSS">
-               Expenses added successfully.
+               وأضافت النفقات بنجاح.
            </div>
 		   <div style="text-align:center;">
-            <button class="btn btn-primary btn-lg " style="width: 40%" onclick="saveBusinessDetails(0);">Save &amp; New</button>
-            <button class="btn btn-primary btn-lg " style="width: 40%" onclick="saveBusinessDetails(1);">Save &amp; Go to Sync</button>
+            <button class="btn btn-primary btn-lg " style="width: 40%" onclick="saveBusinessDetails(0);">حفظ &amp; الجديد</button>
+            <button class="btn btn-primary btn-lg " style="width: 40%" onclick="saveBusinessDetails(1);">حفظ &amp; الذهاب إلى مزامنة</button>
 			</div>
           </div>
           </div>
@@ -98,7 +98,7 @@ var currentYear;
 		var field = document.getElementById("expAmt");
 		if (field.value.length > 8 ) {
 			field.value = field.value.substring(0, 8);
-			alert("Amount cannot be greater than 99999999.99");
+			alert("مبلغ لا يمكن أن يكون أكبر من 99999999.99");
 			field.value='';
 			return false;
 		}
@@ -118,29 +118,29 @@ var currentYear;
                        <div class="modal-body clearfix">
         <div class="row">
           <div class="col-lg-12 clearfix addanexpense">
-            <h1>Add Request Advance</h1>
+            <h1>إضافة طلب المسبق</h1>
             <div class="expenseform clearfix" data-role="page" id="page1">
              <ul  style="padding-left: 32px;padding-right: 32px;">
               <li>
                   <div role="main" class="ui-content">
-                    <input id="empAdvDate" type="text" class="span2 dp1" placeholder="Date" readonly="readonly" style="text-align:left;">
+                    <input id="empAdvDate" type="text" class="span2 dp1" placeholder="تاريخ" readonly="readonly" style="text-align:left;">
                   </div>
 				</li>
                 <li>
 					<input id="empAdvType" type="hidden" style="width: 98%">
                 </li>
 				<li>
-					<input id="empAdvTitle" type="text" placeholder="Title" style="text-align:left;">
+					<input id="empAdvTitle" type="text" placeholder="عنوان" style="text-align:left;">
 				</li>
 				<li>
                   <input id="empAdvAccHead" type="hidden" style="width: 98%">
                 </li>
                  <li>
-               <textarea  id="empAdvjustification"  rows="4" cols="42.5" placeholder="Justification" style="width: 98%"></textarea>
+               <textarea  id="empAdvjustification"  rows="4" cols="42.5" placeholder="مبرر" style="width: 98%"></textarea>
            </li>
 				
         <li>
-          <input id="empAdvAmount" type="tel" placeholder="Amount" style="text-align:left;" onkeyup="validate();">
+          <input id="empAdvAmount" type="tel" placeholder="كمية" style="text-align:left;" onkeyup="validate();">
         </li>
               </ul>
             </div>
@@ -151,7 +151,7 @@ var currentYear;
           <div class="col-lg-12 clearfix expsync">
 		    <div class="row form-group">
               <div class="col-lg-12">
-                <button class="btn btn-primary btn-lg btn-block" onclick="syncSubmitEmpAdvance();">Send for Approval</button>
+                <button class="btn btn-primary btn-lg btn-block" onclick="syncSubmitEmpAdvance();">إرسال للموافقة</button>
               </div>
             </div>
           </div>
@@ -173,7 +173,7 @@ var currentYear;
 	
   });  
     var DefaultCurrencyName = window.localStorage.getItem("DefaultCurrencyName");
-    $("#empAdvAmount").attr("placeholder", "Amount("+DefaultCurrencyName+")");
+    $("#empAdvAmount").attr("placeholder", "كمية("+DefaultCurrencyName+")");
          
 	 j("#empAdvType").change(function() {
 		 changeAdavanceType();
@@ -188,7 +188,7 @@ var currentYear;
 		var field = document.getElementById("empAdvAmount");
 		if (field.value.length > 8 ) {
 			field.value = field.value.substring(0, 8);
-			alert("Amount cannot be greater than 99999999.99");
+			alert("مبلغ لا يمكن أن يكون أكبر من 99999999.99");
 			field.value='';
 			return false;
 		}
@@ -208,7 +208,7 @@ var currentYear;
 <div id = "BE" class="modal-body clearfix">
     <div class="row"  style="padding-left: 20px;padding-right: 20px;">
 		<div class="col-lg-12 clearfix allexpebtn" id="box">
-		<h1>View Business Expense</h1>
+		<h1>عرض نفقة الأعمال</h1>
 		</div>
           <div class="col-lg-12 clearfix expsync">
             <div  style="display:none" id="displayError" class="displayTextError">
@@ -221,27 +221,27 @@ var currentYear;
 </div>
 <div id = "EA" style="display: none">
     		<div class="col-lg-12 clearfix allexpebtn">
-		<h1>Settle Employee Advance</h1>
+		<h1>تسوية الموظف مقدما</h1>
 		</div>
    <div class="expenseform clearfix" data-role="page" id=""  style="padding-left: 32px;padding-right: 32px;">
        <table>
             <tr>
-                <td><label><font face="verdana" color="gray" size="2.77">Total Expense Amount :</font></label></td>
+                <td><label><font face="verdana" color="gray" size="2.77">المبلغ الكلي للنفقات :</font></label></td>
                <td><input id="totalAmount" type="tel" placeholder="" readonly></td>
            </tr>
            &nbsp;&nbsp;&nbsp;
            <tr>
-               <td><label><font face="verdana" color="gray" size="2.77">Unsettled Advances :</font></label></td>
+               <td><label><font face="verdana" color="gray" size="2.77">التقدم غير المستقرة :</font></label></td>
                <td><input id="unsetAdvAmount" type="tel" placeholder="" readonly></td>
            </tr>
            &nbsp;&nbsp;&nbsp;
           <tr>
-               <td><label><font face="verdana" color="gray" size="2.77">Refund to Employee :</font></label></td>
+               <td><label><font face="verdana" color="gray" size="2.77">رد على الموظف :</font></label></td>
               <td><input id="refundToEmp" type="tel"  placeholder="" readonly></td>
            </tr>
            &nbsp;&nbsp;&nbsp;
           <tr>
-              <td><label><font face="verdana" color="gray" size="2.77">Recovery From Employee :</font></label></td>
+              <td><label><font face="verdana" color="gray" size="2.77">التعافي من الموظف :</font></label></td>
               <td><input id="recoverFromEmp" type="tel" placeholder="" readonly></td>
            </tr>
            &nbsp;&nbsp;&nbsp;
@@ -250,7 +250,7 @@ var currentYear;
 <div class="modal-body clearfix">
     <div class="row" style="padding-left: 20px;padding-right: 20px;">
 		<div class="col-lg-12 clearfix allexpebtn" id="box1">
-		<h1>Select Your Advances </h1>
+		<h1>تحديد التقدم لديك </h1>
 		</div>
           <div class="col-lg-12 clearfix expsync">          
             <div  style="display:none" id="displayError" class="displayTextError">
@@ -263,7 +263,7 @@ var currentYear;
         </div>
 </div>
           <div style=" padding-left: 100px; padding-bottom: 20px;">
-         <button class="btn btn-primary btn-lg btn-block" style="width :70%" onclick="submitBEWithEA();"><font size="3.5">Send for Approval</font></button>
+         <button class="btn btn-primary btn-lg btn-block" style="width :70%" onclick="submitBEWithEA();"><font size="3.5">إرسال للموافقة</font></button>
           </div>
 </div>
                             
@@ -286,6 +286,6 @@ var currentYear;
         </div>			
     </div>
               <div  style="display:none" id="loading_Cat" >
-               <img src="images/loading2.gif" id="loading-image_Cat" alt="Loading..." >
+               <img src="images/loading2.gif" id="loading-image_Cat" alt="جار التحميل..." >
 		     </div>
 </div>

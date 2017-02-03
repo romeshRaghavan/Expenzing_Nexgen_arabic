@@ -78,14 +78,14 @@ function login()
 			}else if(data.Status == 'Failure'){
  			   successMessage = data.Message;
 			   if(successMessage.length == 0){
-					successMessage = "Wrong UserName or Password";
+					successMessage = "خطأ اسم المستخدم أو  كلمه السر";
 				}
 				document.getElementById("loginErrorMsg").innerHTML = successMessage;
  			   j('#loginErrorMsg').hide().fadeIn('slow').delay(2000).fadeOut('slow');
  			   j('#loading').hide();
            }else{
 			    j('#loading').hide();
-             alert("Please enter correct username or password");
+             alert("رجاء أدخل صيح اسم المستخدم أو كلمه السر");
            }
 
          },
@@ -125,7 +125,7 @@ function commanLogin(){
  			}else{
  				successMessage = data.message;
  				if(successMessage == "" || successMessage == null){
-				alert("Please enter correct username or password");				
+				alert("رجاء أدخل صيح اسم المستخدم أو كلمه السر");				
 				}else{
  				alert(successMessage);	
  				}	
@@ -309,7 +309,7 @@ function saveBusinessExpDetails(jsonBEArr,busExpDetailsArr){
 				  data: JSON.stringify(jsonToSaveBE),
 				  success: function(data) {
 				  	if(data.Status=="Success"){
-				  		successMessage = "Record(s) has been synchronized successfully.";
+				  		successMessage = "سجل (الصورة) لديها ايضا تزامن بنجاح.";
 						 for(var i=0; i<busExpDetailsArr.length; i++ ){
 							var businessExpDetailId = busExpDetailsArr[i];
 							deleteSelectedExpDetails(businessExpDetailId);
@@ -320,12 +320,12 @@ function saveBusinessExpDetails(jsonBEArr,busExpDetailsArr){
 						 //appPageHistory.push(pageRef);
 					 }else if(data.Status=="Error"){
 					 	requestRunning = false;
-					 	successMessage = "Oops!! Something went wrong. Please contact system administrator";
+					 	successMessage = "وجه الفتاة!! شيئا ما ذهب خطأ. الرجاء الاتصال بمسؤول النظام";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRefFailure);
 					 }else{
 					 	requestRunning = false;
-					 	successMessage = "Error in synching expenses. Please contact system administrator";
+					 	successMessage = "خطأ في النفقات مزامنة. الرجاء الاتصال بمسؤول النظام";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRefFailure);
 					 } 
@@ -333,7 +333,7 @@ function saveBusinessExpDetails(jsonBEArr,busExpDetailsArr){
 				  error:function(data) {
 					  j('#loading_Cat').hide();
 					  requestRunning = false;
-					alert("error: Oops something is wrong, Please Contact System Administer");
+					alert("وجه الفتاة!! شيئا ما ذهب خطأ. الرجاء الاتصال بمسؤول النظام");
 				  }
 			});
 }
@@ -354,7 +354,7 @@ function saveTravelSettleExpDetails(jsonTSArr,tsExpDetailsArr){
 				  data: JSON.stringify(jsonToSaveTS),
 				  success: function(data) {
 				  	if(data.Status=="Success"){
-				  	successMessage = "Record(s) has been synchronized successfully.";
+				  	successMessage = "وقد تزامن الإجابات بنجاح";
 					 for(var i=0; i<tsExpDetailsArr.length; i++ ){
 						var travelSettleExpDetailId = tsExpDetailsArr[i];
 						deleteSelectedTSExpDetails(travelSettleExpDetailId);
@@ -364,19 +364,19 @@ function saveTravelSettleExpDetails(jsonTSArr,tsExpDetailsArr){
 					 j('#mainContainer').load(pageRefSuccess);
 					 }else if(data.Status=="Error"){
 					 	requestRunning = false;
-						successMessage = "Oops!! Something went wrong. Please contact system administrator.";
+						successMessage = "وجه الفتاة!! هناك خطأ ما. الرجاء الاتصال بمسؤول النظام.";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRefFailure);
 					 }else{
 					 	requestRunning = false;
-						successMessage = "Error in synching expenses. Please contact system administrator.";
+						successMessage = "خطأ في النفقات مزامنة. الرجاء الاتصال بمسؤول النظام.";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRefFailure);
 					 }
 				  },
 				  error:function(data) {
 				  	requestRunning = false;
-					alert("Error: Oops something is wrong, Please Contact System Administer");
+					alert("خطأ: عفوا هناك شيئا خطأ، يرجى الاتصال نظام إدارة");
 				  }
 			});
 }
@@ -433,7 +433,7 @@ j.ajax({
 					 	j('#mainContainer').load(pageRefFailure);
 					 }else{
 						 j('#loading_Cat').hide();
-						successMessage = "Oops!! Something went wrong. Please contact system administrator.";
+						successMessage = "عفوا هناك شيئا خطأ، يرجى الاتصال نظام إدارة";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRefFailure);
 					 }
@@ -441,7 +441,7 @@ j.ajax({
 				  error:function(data) {
 					j('#loading_Cat').hide();
 					requestRunning = false;
-					alert("Error: Oops something is wrong, Please Contact System Administer");
+					alert("Error: عفوا هناك شيئا خطأ، يرجى الاتصال نظام إدارة");
 				  }
 			});
 }
@@ -465,7 +465,7 @@ function createAccHeadDropDown(jsonAccHeadArr){
 			})
 			j("#accountHead").select2({
 				data:{ results: jsonArr, text: 'name' },
-				placeholder: "Account Head",
+				placeholder: "رئيس الحساب",
 				minimumResultsForSearch: -1,
 				initSelection: function (element, callback) {
 					callback(jsonArr[1]);
@@ -490,7 +490,7 @@ function createTRAccHeadDropDown(jsonAccHeadArr){
 	}
 	j("#trAccountHead").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Select Account Head",
+		placeholder: "حدد رئيس الحساب",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -521,7 +521,7 @@ function createExpNameDropDown(jsonExpNameArr){
 	
 	j("#expenseName").select2({
 		data:{ results: jsonExpArr, text: 'name' },
-		placeholder: "Expense Name",
+		placeholder: "اسم حساب",
 		minimumResultsForSearch: -1,
 		initSelection: function (element, callback) {
 			callback(jsonExpArr[0]);
@@ -547,7 +547,7 @@ function createCurrencyDropDown(jsonCurrencyArr){
 		
 	j("#currency").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Currency",
+		placeholder: "دقة",
 		minimumResultsForSearch: -1,
 		initSelection: function (element, callback) {
 					callback(jsonArr[0]);
@@ -573,7 +573,7 @@ function createTravelModeDown(jsonTrvlModeArr){
 		
 	j("#travelMode").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Travel Mode",
+		placeholder: "وضع السفر",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -584,7 +584,7 @@ function createTravelModeDown(jsonTrvlModeArr){
 	
 	j("#roundTripMode").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Travel Mode",
+		placeholder: "وضع السفر",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -595,7 +595,7 @@ function createTravelModeDown(jsonTrvlModeArr){
     
     	j("#travelModeForTS").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Travel Mode",
+		placeholder: "وضع السفر",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -618,7 +618,7 @@ function createCategoryDropDown(jsonCategoryArr){
 		
 	j("#travelCategory").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Travel Category",
+		placeholder: "السفر الفئة",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -629,7 +629,7 @@ function createCategoryDropDown(jsonCategoryArr){
 	
 	j("#roundTripCategory").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Travel Category",
+		placeholder: "السفر الفئة",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -640,7 +640,7 @@ function createCategoryDropDown(jsonCategoryArr){
     
     	j("#travelCategoryForTS").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Travel Category",
+		placeholder: "السفر الفئة",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -663,7 +663,7 @@ function createCitytownDropDown(jsonCityTownArr){
 		
 	j("#fromCitytown").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "From Location",
+		placeholder: "من الموقع",
 		minimumResultsForSearch: 2,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -674,7 +674,7 @@ function createCitytownDropDown(jsonCityTownArr){
 	
 	j("#toCitytown").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "To Location",
+		placeholder: "إلى الموقع",
 		minimumResultsForSearch: 2,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -686,7 +686,7 @@ function createCitytownDropDown(jsonCityTownArr){
     
     	j("#Citytown").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "From Location",
+		placeholder: "من الموقع",
 		minimumResultsForSearch: 2,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -709,7 +709,7 @@ function createTravelTypeDropDown(jsonTravelTypeArr){
 		
 	j("#travelType").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Purpose Of Travel",
+		placeholder: "الغرض من السفر",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -730,71 +730,71 @@ function getFormattedDate(input){
 
 function validateExpenseDetails(exp_date,exp_from_loc,exp_to_loc,exp_narration,exp_unit,exp_amt,acc_head_id,exp_name_id,currency_id){
 	if(exp_date == ""){
-		alert("Expense Date is invalid");
+		alert("حساب تاريخ غير صالح");
 		return false;
 	}
 	if(acc_head_id == "-1"){
-		alert("Account Head is invalid");
+		alert("رئيس الحساب غير صالح");
 		return false;
 	}
 	if(exp_name_id == "-1"){
-		alert("Expense Name is invalid");
+		alert("اسم حساب غير صالح");
 		return false;
 	}
 	if(flagForUnitEnable == true){
-		if(isZero(exp_unit,"Unit")==false){
+		if(isZero(exp_unit,"وحدة")==false){
 			document.getElementById("expUnit").value = "";
 			return false;
 		}
 	}	
-	if(isZero(exp_amt,"Amount")==false){
+	if(isZero(exp_amt,"كمية")==false){
 		document.getElementById("expAmt").value = "";
 		return false;
 	}
 	if(perUnitDetailsJSON.expenseIsfromAndToReqd!='N'){
 		if(exp_from_loc == ""){
-			alert("From Location is invalid");
+			alert("من الموقع غير صالح");
 			return false;
 		}
 		if(exp_to_loc == ""){
-			alert("To Location is invalid");
+			alert("إلى الموقع غير صالح");
 			return false;
 		}
 	}
 
 	if(exp_narration == ""){
-		alert("Narration is invalid");
+		alert("رواية غير صالح");
 		return false;
 	}
 	
 	if(perUnitDetailsJSON.expIsUnitReq == 'Y'){
 
 		if(exp_unit != ""){
-			if(isOnlyNumeric(exp_unit,"Unit")==false)
+			if(isOnlyNumeric(exp_unit,"وحدة")==false)
 			{
 				return false;
 			}
 			
 		}else{
-			alert("Unit is invalid");
+			alert("وحدة غير صالحة");
 			return false;
 		}
 	}
 		
 
 		if(exp_amt != ""){
-			if(isOnlyNumeric(exp_amt,"Amount")==false)
+			if(isOnlyNumeric(exp_amt,"كمية")==false)
 			{
 				return false;
 			}
 			
 		}else{
-			alert("Amount is invalid");
+			alert("كمية غير صالح");
 			return false;
 		}
 	
 	if(currency_id == "-1"){
-		alert("Currency Name is invalid");
+		alert("اسم العملة غير صالح");
 		return false;
 	}
 	
@@ -993,14 +993,14 @@ function saveTravelRequestAjax(jsonToSaveTR){
 						j('#mainContainer').load(pageRefSuccess);
 						appPageHistory.push(pageRefSuccess);
 				  }else{
-					 successMessage = "Error: Oops something is wrong, Please Contact System Administer";
+					 successMessage = "خطأ: عفوا هناك شيئا خطأ، يرجى الاتصال نظام إدارة";
 					  j('#loading_Cat').hide();
 					  j('#mainContainer').load(pageRefFailure);
 					   appPageHistory.push(pageRefFailure);
 				  }
 				},
 			  error:function(data) {
-				successMessage = "Error: Oops something is wrong, Please Contact System Administer";
+				successMessage = "خطأ: عفوا هناك شيئا خطأ، يرجى الاتصال نظام إدارة";
 					  j('#loading_Cat').hide();
 					  j('#mainContainer').load(pageRefFailure);
 					  appPageHistory.push(pageRefFailure);
@@ -1152,50 +1152,50 @@ function validatetravelDetails(travel_purpose_id,account_head_id,from_id,to_id,t
 		return false;
 	}
 	if(travel_purpose_id == "-1"){
-		alert("Purpose Of Travel is invalid");
+		alert("الغرض من السفر هو غير صالح");
 		return false;
 	}
 	if(account_head_id == "-1"){
-		alert("Account Head is invalid");
+		alert("رئيس الحساب غير صالح");
 		return false;
 	}
 	if(from_id == "-1"){
-		alert("From Location is invalid");
+		alert("من الموقع غير صالح");
 		return false;
 	}
 	if(to_id == "-1"){
-		alert("To Location is invalid");
+		alert("إلى الموقع غير صالح");
 		return false;
 	}
 	var listItineraryTab = document.getElementById('myTab');
 			if(hasClass(listItineraryTab.children[0],"active")){
 				if(travel_mode_id == "-1"){
-					alert("Mode is invalid");
+					alert("وضع غير صالح");
 					return false;
 				}
 				if(travel_category_id == "-1"){
-					alert("Category is invalid");
+					alert("فئة غير صالح");
 					return false;
 				}
 				if(document.getElementById('selectDate_One').value == "Select Date"){
-					alert("Travel Date is invalid");
+					alert("السفر تاريخ غير صالح");
 					return false;
 				}
 			}else{
 				if(tvl_mode_rnd_id == "-1"){
-					alert("Mode is invalid");
+					alert("وضع غير صالح");
 					return false;
 				}
 				if(tvl_category_rnd_id == "-1"){
-					alert("Category is invalid");
+					alert("فئة غير صالح");
 					return false;
 				}
 				if(document.getElementById('selectDate_Three').value == "Select Date"){
-					alert("Travel Date is invalid");
+					alert("السفر تاريخ غير صالح");
 					return false;
 				}
 				if(document.getElementById('selectDate_Two').value == "Select Date"){
-					alert("Travel Date is invalid");
+					alert("السفر تاريخ غير صالح");
 					return false;
 				}
 		} 	
@@ -1376,7 +1376,7 @@ function setPerUnitDetails(transaction, results){
 			}
 		}else{
 
-			alert("Please Synch your expense Names to claim expense.");
+			alert("يرجى التزامن بين أسماء نفقتك على المطالبة حساب.");
 		}
 	
 }
@@ -1399,7 +1399,7 @@ function setPerUnitDetails(transaction, results){
 				}
 		}else{
 
-			alert("Please synch your expense names to settle your travel request.");
+			alert("يرجى التوافق أسماء حساب الخاص لتسوية طلب السفر.");
 		}
  	
  	}
@@ -1429,8 +1429,8 @@ function setPerUnitDetails(transaction, results){
 	 						 && perUnitStatus =='N' && expActiveInactive !='1'){
 	 					if (parseFloat(limitAmt) < parseFloat(amount)){
 	 						 exceptionStatus = "Y";
-	 						 exceptionMessage = "(Exceeding per unit amount defined: "
-	 							 + limitAmt + " for expense name " + expName+")";
+	 						 exceptionMessage = "(تزيد في كمية وحدة المعرفة: "
+	 							 + limitAmt + "لاسم المصاريف " + expName+")";
 	 							 j('#errorMsgArea').children('span').text(exceptionMessage);
 	 					 }else{
 	 						 exceptionStatus = "N";
@@ -1442,8 +1442,8 @@ function setPerUnitDetails(transaction, results){
 
 	 					 if (parseFloat(ratePerUnit) < amount/unitValue){
 	 						 exceptionStatus = "Y";
-	 						 exceptionMessage = "(Exceeding per unit amount defined: "
-	 							 + ratePerUnit + " for expense name " + expName+")";
+	 						 exceptionMessage = "(تزيد في كمية وحدة المعرفة: "
+	 							 + ratePerUnit + "لاسم المصاريف " + expName+")";
 	 							 j('#errorMsgArea').children('span').text(exceptionMessage);
 	 					 }else{
 	 						 exceptionStatus = "N";
@@ -1457,7 +1457,7 @@ function setPerUnitDetails(transaction, results){
 function calculatePerUnit(){
 		 
 		 var unit=document.getElementById("expUnit").value;
-		if(isOnlyNumeric(unit,"Unit")==false)
+		if(isOnlyNumeric(unit,"وحدة")==false)
 		{	
 			document.getElementById("expUnit").value="";
 			return false;
@@ -1488,7 +1488,7 @@ function validateNumericField(obj){
 				}
 	}else if(obj=='expUnit'){
 		var unit=document.getElementById("expUnit").value;
-			if(isOnlyNumeric(amt,"Unit")==false){	
+			if(isOnlyNumeric(amt,"وحدة")==false){	
 					document.getElementById("expUnit").value="";
 					return false;
 				}
@@ -1499,14 +1499,14 @@ function setDelayMessage(returnJsonData,jsonToBeSend,busExpDetailsArr){
      var pageRefSuccess=defaultPagePath+'success.html';
      var pageRefFailure=defaultPagePath+'failure.html';
 		if(returnJsonData.DelayStatus=='Y'){
-			exceptionMessage = "This voucher has exceeded Time Limit.";
+			exceptionMessage = "وقد تجاوز هذا قسيمة المهلة.";
 			
 		      j('#displayError').children('span').text(exceptionMessage);
 		      j('#displayError').hide().fadeIn('slow').delay(2000).fadeOut('slow');
 		    
 		}else{
 
-			if(confirm("This voucher has exceeded Time Limit. Do you want to proceed?")==false){
+			if(confirm("وقد تجاوز هذا قسيمة المهلة. هل تريد المتابعة?")==false){
 						return false;
 					}
 			 jsonToBeSend["DelayAllowCheck"]=true;
@@ -1515,7 +1515,7 @@ function setDelayMessage(returnJsonData,jsonToBeSend,busExpDetailsArr){
 }
 
 function setTREntitlementExceedMessage(returnJsonData,jsonToBeSend){
-		var msg=returnJsonData.Message+".\nThis voucher has exceeded Entitlements. Do you want to proceed?";
+		var msg=returnJsonData.Message+".\nوقد تجاوز هذا قسيمة الاستحقاقات. هل تريد المتابعة?";
 	navigator.notification.confirm(msg,
 		function(buttonIndex){
             onConfirm(buttonIndex, msg,jsonToBeSend);
@@ -1559,7 +1559,7 @@ function createTravelExpenseNameDropDown(jsonExpenseNameArr){
 		
 	j("#travelExpenseName").select2({
 		data:{ results: jsonExpArr, text: 'name' },
-		placeholder: "Expense Name",
+		placeholder: "اسم حساب",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -1573,65 +1573,65 @@ function createTravelExpenseNameDropDown(jsonExpenseNameArr){
 function validateTSDetails(exp_date,exp_narration,exp_unit,exp_amt,travelRequestId,exp_name_id,currency_id,travelMode_id,travelCategory_id,cityTown_id){
 	
 	if(travelRequestId == "-1"){
-		alert("Travel Request Number is invalid.");
+		alert("السفر طلب عدد غير صالح.");
 		return false;
 	}
 	if(exp_date == ""){
-		alert("Expense Date is invalid.");
+		alert("حساب تاريخ غير صالح.");
 		return false;
 	}
 	if(exp_name_id == "-1"){
-		alert("Expense Name is invalid.");
+		alert("اسم حساب غير صالح.");
 		return false;
 	}
 	if(ismodeCategoryJSON.isModeCategory=="Y"){
 		if(travelMode_id == "-1"){
-			alert("Mode is invalid.");
+			alert("وضع غير صالح.");
 			return false;
 		}
 		if(travelCategory_id == "-1"){
-			alert("Category is invalid.");
+			alert("فئة غير صالح.");
 			return false;
 		}
 	}
 	if(cityTown_id == "-1"){
-		alert("City town details is invalid.");
+		alert("تفاصيل المدينة مدينة غير صحيحة.");
 		return false;
 	}
 	if(exp_narration == ""){
-		alert("Narration is invalid.");
+		alert("رواية غير صالح.");
 		return false;
 	}
 	if(exp_unit != ""){
-			if(isOnlyNumeric(exp_unit,"Unit")==false)
+			if(isOnlyNumeric(exp_unit,"وحدة")==false)
 			{
 				return false;
 			}
-			if(isZero(exp_unit,"Unit")==false)
+			if(isZero(exp_unit,"وحدة")==false)
 			{
 				document.getElementById("expUnit").value="";
 				return false;
 			}
 		}else{
-			alert("Unit is invalid.");
+			alert("وحدة غير صالحة.");
 			return false;
 		}
 	if(exp_amt != ""){
-			if(isOnlyNumeric(exp_amt,"Amount")==false)
+			if(isOnlyNumeric(exp_amt,"كمية")==false)
 			{
 				return false;
 			}
-			if(isZero(exp_amt,"Amount")==false)
+			if(isZero(exp_amt,"كمية")==false)
 			{
 				document.getElementById("expAmt").value="";
 				return false;
 			}
 		}else{
-			alert("Amount is invalid.");
+			alert("كمية غير صالح.");
 			return false;
 		}
 	if(currency_id == "-1"){
-		alert("Currency Name is invalid.");
+		alert("اسم العملة غير صالح.");
 		return false;
 	}
 	return true;
@@ -1652,7 +1652,7 @@ function createTravelRequestNoDropDown(jsonTravelRequestNoArr){
 		
 	j("#travelRequestName").select2({
 		data:{ results: jsonRequestArr, text: 'name' },
-		placeholder: "Travel Request Number",
+		placeholder: "السفر طلب عدد",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -1676,7 +1676,7 @@ function oprationOnExpenseClaim(){
 														  
 						  });
 					  }else{
-						 alert("Tap and select Expenses to send for Approval with server.");
+						 alert("اضغط وحدد المصروفات لارسال للموافقة مع خادم.");
 					  }
 			});
         }else{  
@@ -1721,7 +1721,7 @@ function oprationOnExpenseClaim(){
 							  var currentAccountHeadID=j(this).find('td.accHeadId').text();
 
 							  if(validateAccountHead(accountHeadIdToBeSent,currentAccountHeadID)==false){
-								  exceptionMessage="Selected expenses should be mapped under Single Expense Type/Account Head."
+								  exceptionMessage="يجب أن يتم تعيين النفقات المحددة في إطار واحد نفقة نوع / رئيس الحساب"
 									  j('#displayError').children('span').text(exceptionMessage);
 								  j('#displayError').hide().fadeIn('slow').delay(3000).fadeOut('slow');
 								  requestRunning = false;
@@ -1771,7 +1771,7 @@ function oprationOnExpenseClaim(){
 						  	 sendForApprovalBusinessDetails(jsonExpenseDetailsArr,busExpDetailsArr,accountHeadIdToBeSent);
 						  }
 					  }else{
-						 alert("Tap and select Expenses to send for Approval with server.");
+						 alert("اضغط وحدد المصروفات لارسال للموافقة مع خادم.");
 					  }
 			});
         }
@@ -1796,7 +1796,7 @@ function oprationOnExpenseClaim(){
 					  }
 					  j('#mainContainer').load(pageRef);
 				  }else{
-					  alert("Tap and select Expenses to delete.");
+					  alert("اضغط وحدد المصروفات لحذف.");
 				  }
 			});
 		
@@ -1848,7 +1848,7 @@ function oprationOnExpenseClaim(){
 						  saveBusinessExpDetails(jsonExpenseDetailsArr,busExpDetailsArr);
 					  }
 				  }else{
-					 alert("Tap and select Expenses to synch with server.");
+					 alert("اضغط وحدد المصروفات إلى التوافق مع الخادم.");
 				  }
 			});
 	
@@ -1905,7 +1905,7 @@ function oprationONTravelSettlementExp(){
 				  }
 			}else{
 				requestRunning = false;
-				 alert("Tap and select Expenses to synch with server.");
+				 alert("اضغط وحدد المصروفات إلى التوافق مع الخادم");
 			}
 			});
 			
@@ -1927,7 +1927,7 @@ function oprationONTravelSettlementExp(){
 					  j('#mainContainer').load(pageRef);
 					  j('#mainHeader').load(headerBackBtn);	
 				  }else{
-					 alert("Tap and select Expenses to delete.");
+					 alert("اضغط وحدد المصروفات لحذف.");
 				  }	
 			});
 	}
@@ -2044,18 +2044,18 @@ function resetImageData(){
 								walletID = jsonWalletIDArr[i];
 								deleteSelectedWallets(walletID);
 							 }
-							document.getElementById("wallet_msg").innerHTML = "Selected File synch successfully.";
+							document.getElementById("wallet_msg").innerHTML = "اختيار تزامن الملف بنجاح.";
 							j('#mainHeader').load(headerBackBtn);
 							j("#walletSource td.selected").hide();
 							j('#wallet_msg').hide().fadeIn('slow').delay(3000).fadeOut('slow');  
 							j('#loading_Cat').hide();
 						}else if(data.SyncStatus=="Error"){
-							document.getElementById("wallet_msg").innerHTML = "Error: Oops something is wrong, Please Contact System Administer";
+							document.getElementById("wallet_msg").innerHTML = "خطأ: عفوا هناك شيئا خطأ، يرجى الاتصال نظام إدارة";
 							j('#mainHeader').load(headerBackBtn);
 						 	j('#wallet_msg').hide().fadeIn('slow').delay(3000).fadeOut('slow');
 							j('#loading_Cat').hide();
 						}else if(data.SyncStatus=="Failure"){
-							document.getElementById("wallet_msg").innerHTML = "File "+data.FileName+" synch fail.";
+							document.getElementById("wallet_msg").innerHTML = "ملف "+data.FileName+" تزامن فشل.";
 							j('#mainHeader').load(headerBackBtn);
 							j('#wallet_msg').hide().fadeIn('slow').delay(3000).fadeOut('slow');
 							j('#loading_Cat').hide();
@@ -2096,7 +2096,7 @@ function oprationOnWallet(){
 						  saveWalletDetails(jsonWalletArr,jsonWalletIDArr);
 						}
 					}else{
-					   alert("Tap and select My Receipts Wallet to synch with server.");
+					   alert("اضغط وحدد المصروفات إلى التوافق مع الخادم");
 					  }
 					});
 			}		
@@ -2374,7 +2374,7 @@ function createAdvanceTypeDropDown(jsonAdvanceTypeArr){
 		
 	j("#empAdvType").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Advance Type",
+		placeholder: "مسبقا نوع",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -2406,7 +2406,7 @@ function createAccountHeadDropDown(jsonAccountHeadArr){
 		
 	j("#empAdvAccHead").select2({
 		data:{ results: jsonArr, text: 'name' },
-		placeholder: "Expense Type",
+		placeholder: "نوع حساب",
 		minimumResultsForSearch: -1,
 		formatResult: function(result) {
 			if ( ! isJsonString(result.id))
@@ -2501,7 +2501,7 @@ function saveEmployeeAdvanceAjax(jsonToSaveEA){
 					 	j('#mainContainer').load(pageRefFailure);
 					 }else{
 						 j('#loading_Cat').hide();
-						successMessage = "Oops!! Something went wrong. Please contact system administrator.";
+						successMessage = "وجه الفتاة!! هناك خطأ ما. الرجاء الاتصال بمسؤول النظام.";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRefFailure);
 					 }
@@ -2509,7 +2509,7 @@ function saveEmployeeAdvanceAjax(jsonToSaveEA){
 				  error:function(data) {
 					j('#loading_Cat').hide();
 					requestRunning = false;
-					alert("Error: Oops something is wrong, Please Contact System Administer");
+					alert("خطأ: عفوا هناك شيئا خطأ، يرجى الاتصال نظام إدارة");
 				  }
 	});
 }
@@ -2517,45 +2517,45 @@ function saveEmployeeAdvanceAjax(jsonToSaveEA){
 function validateEmpAdvanceDetails(empAdvDate,empAdvTitle,empAdvjustification,empAdvAmount,empAdvType_id,empAdvType_Name,empAccHead_id,empAccHead_Name){
     
 	if(empAdvDate==""){
-		alert("Advance Date is required");
+		alert("مطلوب التسجيل المسبق");
 		return false;
 	}
 	if(empAdvTitle == ""){
-		alert("Advance Title is required");
+		alert("مطلوب مسبقا عنوان");
 		return false;
 	}
     if(empAdvjustification == ""){
-		alert("justification is required");
+		alert("مطلوب مبرر");
 		return false;
 	}
      if(empAdvAmount == ""){
-		alert("Amount is required");
+		alert("مطلوب مبلغ");
 		return false;
 	}
     
    if(empAdvAmount != ""){
-    if(isOnlyNumeric(empAdvAmount,"Amount")==false)
+    if(isOnlyNumeric(empAdvAmount,"كمية")==false)
         {
          document.getElementById("empAdvAmount").value = "";
           return false;
         }
 			
 		}else{
-			alert("Amount is invalid");
+			alert("كمية غير صالح");
 			return false;
 		}
     
-    if(isZero(empAdvAmount,"Amount")==false){
+    if(isZero(empAdvAmount,"كمية")==false){
 		document.getElementById("empAdvAmount").value = "";
 		return false;
 	}
     
 	if(empAdvType_id == "-1" || empAdvType_id == ""){
-		alert("Advance Type is invalid");
+		alert("مسبقا نوع غير صالح");
 		return false;
 	}
 	if(empAccHead_id == "-1" || empAccHead_id == ""){
-		alert("Expense Type is invalid");
+		alert("نوع حساب غير صالح");
 		return false;
 	}
 	
@@ -2721,7 +2721,7 @@ function submitBEWithEA(){
 							  var currentAccountHeadID=j(this).find('td.accHeadId').text();
 
 							  if(validateAccountHead(accountHeadIdToBeSent,currentAccountHeadID)==false){
-								  exceptionMessage="Selected expenses should be mapped under Single Expense Type/Account Head."
+								  exceptionMessage="يجب أن يتم تعيين النفقات المحددة في إطار واحد رئيس نفقة نوع / الحساب."
 									  j('#displayError').children('span').text(exceptionMessage);
 								  j('#displayError').hide().fadeIn('slow').delay(3000).fadeOut('slow');
 								  requestRunning = false;
@@ -2783,7 +2783,7 @@ function submitBEWithEA(){
 						  	 sendForApprovalBusinessDetailsWithEa(jsonExpenseDetailsArr,jsonEmplAdvanceArr,busExpDetailsArr,emplAdvanceDetailsArr,accountHeadIdToBeSent);
 						  }
 					  }else{
-						 alert("Tap and select Expenses to send for Approval with server.");
+						 alert("اضغط وحدد المصروفات لارسال للموافقة مع خادم.");
                       }
     
 }
@@ -2860,7 +2860,7 @@ j.ajax({
 					 	j('#mainContainer').load(pageRefFailure);
 					 }else{
 						 j('#loading_Cat').hide();
-						successMessage = "Oops!! Something went wrong. Please contact system administrator.";
+						successMessage = "وجه الفتاة!! عفوا هناك شيئا خطأ، يرجى الاتصال نظام إدارة.";
 						j('#mainHeader').load(headerBackBtn);
 					 	j('#mainContainer').load(pageRefFailure);
 					 }
@@ -2868,7 +2868,7 @@ j.ajax({
 				  error:function(data) {
 					j('#loading_Cat').hide();
 					requestRunning = false;
-					alert("Error: Oops something is wrong, Please Contact System Administer");
+					alert("خطأ:عفوا هناك شيئا خطأ، يرجى الاتصال نظام إدارة");
 				  }
 			});
 }
